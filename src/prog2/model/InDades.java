@@ -5,7 +5,6 @@
  */
 package prog2.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import prog2.vista.CentralUBException;
 
