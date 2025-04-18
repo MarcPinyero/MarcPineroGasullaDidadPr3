@@ -4,11 +4,15 @@
  */
 package prog2.model;
 
+import prog2.vista.CentralUBException;
+
+import java.util.List;
+
 /**
  *
  * @author Daniel Ortiz
  */
-public class Dades {
+public class Dades implements InDades{
     public final static long  VAR_UNIF_SEED = 123;
     public final static float GUANYS_INICIALS = 0;
     public final static float PREU_UNITAT_POTENCIA = 1;
@@ -16,7 +20,7 @@ public class Dades {
 
     // Afegir atributs:
     private VariableUniforme variableUniforme;
-    private int insercioBarres;
+    private float insercioBarres;
     private Reactor reactor;
     private SistemaRefrigeracio sistemaRefrigeracio;
     private GeneradorVapor generadorVapor;
@@ -61,14 +65,34 @@ public class Dades {
      * @param demandaPotencia Demanda de potència actual.
      */
     private PaginaEconomica actualitzaEconomia(float demandaPotencia){
-          // Completar
+        float potencia = calculaPotencia();
+        float penalitzacio = 0;
+        float beneficis = potencia;
+        float costos = reactor.getCostOperatiu() + sistemaRefrigeracio.getCostOperatiu() + generadorVapor.getCostOperatiu() + turbina.getCostOperatiu();
+
+
+        if (potencia > demandaPotencia)
+            penalitzacio = 250;
+
+        guanysAcumulats+= beneficis - costos - penalitzacio;
+
+        float percentatge = (potencia / demandaPotencia) * 100;
+
+        PaginaEconomica economica = new PaginaEconomica(dia,demandaPotencia,potencia, percentatge,beneficis,penalitzacio,costos,guanysAcumulats);
+        return economica;
+
     }
 
     /**
      * Aquest mètode ha de establir la nova temperatura del reactor.
      */
     private void refrigeraReactor() {
-          // Completar
+        float temp = mostraEstat().getOutReactor() - mostraEstat().getOutRefrigeracio();
+        if (temp < 25)
+            reactor.setTemp(25);
+        else
+            reactor.setTemp(temp);
+
     }
 
     /**
@@ -78,7 +102,95 @@ public class Dades {
      * @param paginaIncidencies Pàgina d'incidències.
      */
     private void revisaComponents(PaginaIncidencies paginaIncidencies) {
-          // Completar
+          reactor.revisa(paginaIncidencies);
+          sistemaRefrigeracio.revisa(paginaIncidencies);
+          generadorVapor.revisa(paginaIncidencies);
+          turbina.revisa(paginaIncidencies);
+    }
+
+    @Override
+    public float getInsercioBarres() {
+        return insercioBarres;
+    }
+
+    @Override
+    public void setInsercioBarres(float insercioBarres) throws CentralUBException {
+        if (insercioBarres < 0 || insercioBarres > 100)
+            throw new CentralUBException("El percentatge d'inserciò ha d'estar entre 0 i 100");
+        this.insercioBarres = insercioBarres;
+    }
+
+    @Override
+    public void activaReactor() throws CentralUBException {
+        reactor.activa();
+
+    }
+
+    @Override
+    public void desactivaReactor() {
+        reactor.desactiva();
+
+    }
+
+    @Override
+    public Reactor mostraReactor() {
+        return reactor;
+    }
+
+    @Override
+    public void activaBomba(int id) throws CentralUBException {
+
+        for (BombaRefrigerant bomba : sistemaRefrigeracio.getBombas()){
+            if (bomba.getId() == id)
+                bomba.activa();
+        }
+
+
+    }
+
+    @Override
+    public void desactivaBomba(int id) {
+        for (BombaRefrigerant bomba : sistemaRefrigeracio.getBombas()){
+            if (bomba.getId() == id)
+                bomba.desactiva();
+        }
+
+    }
+
+    @Override
+    public SistemaRefrigeracio mostraSistemaRefrigeracio() {
+        return sistemaRefrigeracio;
+    }
+
+    @Override
+    public float calculaPotencia() {
+        return mostraEstat().getOutTurbina();
+    }
+
+    @Override
+    public float getGuanysAcumulats() {
+        return guanysAcumulats;
+    }
+
+    @Override
+    public PaginaEstat mostraEstat() {
+        float OutBarres = insercioBarres;
+        float OutReactor = reactor.calculaOutput(insercioBarres);
+        float OutRefrigeracio = sistemaRefrigeracio.calculaOutput(OutReactor);
+        float OutGenerador = generadorVapor.calculaOutput(OutRefrigeracio);
+        float OutTurbina = turbina.calculaOutput(OutGenerador);
+        PaginaEstat estat = new PaginaEstat(dia, OutBarres, OutReactor, OutRefrigeracio, OutGenerador, OutTurbina);
+        return estat;
+    }
+
+    @Override
+    public Bitacola mostraBitacola() {
+        return bitacola;
+    }
+
+    @Override
+    public List<PaginaIncidencies> mostraIncidencies() {
+        return List.of(bitacola.getIncidencies().toArray(new PaginaIncidencies[0]));
     }
 
     public Bitacola finalitzaDia(float demandaPotencia) {

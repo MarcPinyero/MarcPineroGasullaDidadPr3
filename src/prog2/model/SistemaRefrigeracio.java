@@ -11,6 +11,7 @@ public class SistemaRefrigeracio implements InComponent{
 
     public SistemaRefrigeracio() {
         this.bombas = new ArrayList<>();
+        this.activat = true;
     }
 
     public void afegirBomba(BombaRefrigerant bomba){
@@ -72,5 +73,13 @@ public class SistemaRefrigeracio implements InComponent{
         if (250*activas < input)
             return 250*activas;
         return input;
+    }
+
+    public ArrayList<BombaRefrigerant> getBombas() {
+        return bombas;
+    }
+
+    public void setBombas(ArrayList<BombaRefrigerant> bombas) {
+        this.bombas = bombas;
     }
 }
