@@ -1,7 +1,9 @@
 package prog2.adaptador;
 
 import prog2.model.*;
+import prog2.vista.CentralUBException;
 
+import java.io.*;
 import java.util.List;
 
 public class Adaptador {
@@ -16,11 +18,11 @@ public class Adaptador {
 
     }
 
-    public void setInsercio(float insercio){
+    public void setInsercio(float insercio) throws CentralUBException {
         dades.setInsercioBarres(insercio);
     }
 
-    public void activaReactor(){
+    public void activaReactor() throws CentralUBException{
         dades.activaReactor();
     }
 
@@ -34,7 +36,7 @@ public class Adaptador {
 
     }
 
-    public void activaRefrigeracio(){
+    public void activaRefrigeracio() throws CentralUBException{
         SistemaRefrigeracio refri = dades.mostraSistemaRefrigeracio();
         refri.activa();
 
@@ -46,7 +48,7 @@ public class Adaptador {
 
     }
 
-    public void activaBomba(int id){
+    public void activaBomba(int id) throws CentralUBException{
         dades.activaBomba(id);
     }
 
@@ -89,6 +91,74 @@ public class Adaptador {
     public String finalitzaDia(float demanda){
         Bitacola bitacola = dades.finalitzaDia(demanda);
         return bitacola.toString();
+
+
+    }
+
+    public void guardaDades(String camiDesti) throws CentralUBException{
+        File file = new File(camiDesti);
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+
+        //Escribim les dades al fitxer.
+        try {
+            fos = new FileOutputStream(file);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(this.dades);
+        }
+        catch (IOException e) {
+            throw new CentralUBException(e.getMessage());
+        }
+
+        finally {
+            try {
+                if (fos!= null)
+                    fos.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                if (oos != null)
+                    oos.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+    }
+    public void carregaDades(String camiOrigen)throws CentralUBException{
+        Dades dades1 = null;
+        FileInputStream fin = null;
+        ObjectInputStream ois = null;
+        try {
+            fin = new FileInputStream(camiOrigen);
+            ois = new ObjectInputStream(fin);
+            dades = (Dades) ois.readObject();
+
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        catch (ClassNotFoundException e) {
+            throw new CentralUBException("No s'ha trobat la classe dades al fitxer.");
+        }
+        finally {
+            try {
+                if (fin != null)
+                    fin.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                if (ois != null)
+                    ois.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
 
 
     }

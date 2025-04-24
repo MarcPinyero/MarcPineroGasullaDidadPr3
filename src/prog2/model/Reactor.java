@@ -2,7 +2,10 @@ package prog2.model;
 
 import prog2.vista.CentralUBException;
 
-public class Reactor implements InComponent{
+import java.io.Serializable;
+import java.lang.foreign.SegmentAllocator;
+
+public class Reactor implements InComponent, Serializable {
     private float temp;
     private boolean activat;
 

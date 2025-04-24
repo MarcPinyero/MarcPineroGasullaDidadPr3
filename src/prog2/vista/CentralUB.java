@@ -141,11 +141,11 @@ public class CentralUB {
                     break;
 
                 case MENU_PRINCIPAL_OPCIO9:
-
+                    adaptador.guardaDades("Dades.txt");
                     break;
 
                 case MENU_PRINCIPAL_OPCIO10:
-
+                    adaptador.carregaDades("Dades.txt");
                     break;
 
                 case MENU_PRINCIPAL_SORTIR:
@@ -181,7 +181,12 @@ public class CentralUB {
                 case MENU_S1_OPCIO2:
                     System.out.println("Digues l'inserció de les barres: ");
                     float insercio = sc.nextFloat();
-                    adaptador.setInsercio(insercio);
+                    try {
+                        adaptador.setInsercio(insercio);
+
+                    } catch (CentralUBException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case MENU_S1_SORTIR:
                     break;
@@ -210,7 +215,12 @@ public class CentralUB {
             // Fem les accions necessàries
             switch(opcio) {
                 case MENU_S2_OPCIO1:
-                    adaptador.activaReactor();
+                    try {
+                        adaptador.activaReactor();
+
+                    } catch (CentralUBException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case MENU_S2_OPCIO2:
@@ -250,7 +260,11 @@ public class CentralUB {
             // Fem les accions necessàries
             switch (opcio) {
                 case MENU_S3_OPCIO1:
-                    adaptador.activaRefrigeracio();
+                    try {
+                        adaptador.activaRefrigeracio();
+                    } catch (CentralUBException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case MENU_S3_OPCIO2:
@@ -260,7 +274,12 @@ public class CentralUB {
                 case MENU_S3_OPCIO3:
                     System.out.println("ID de la bomba a activar.");
                     id = sc.nextInt();
-                    adaptador.activaBomba(id);
+                    try {
+                        adaptador.activaBomba(id);
+
+                    } catch (CentralUBException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case MENU_S3_OPCIO4:
