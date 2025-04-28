@@ -125,6 +125,7 @@ public class Dades implements InDades, Serializable {
     public void activaReactor() throws CentralUBException {
         reactor.activa();
 
+
     }
 
     @Override

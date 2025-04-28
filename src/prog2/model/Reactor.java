@@ -20,6 +20,7 @@ public class Reactor implements InComponent, Serializable {
             throw new CentralUBException("Temperatura superior a 1000º");
         activat = true;
 
+
     }
 
     @Override
@@ -35,8 +36,9 @@ public class Reactor implements InComponent, Serializable {
 
     @Override
     public void revisa(PaginaIncidencies p) {
-        if (temp > 1000)
+        if (temp > 1000){
             p.afegeixIncidencia("Temperatura del reactor superior a 1000º");
+            activat = false;}
 
     }
 
