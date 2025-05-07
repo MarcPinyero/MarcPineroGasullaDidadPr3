@@ -10,8 +10,14 @@ import prog2.adaptador.Adaptador;
 import java.util.Scanner;
 
 /**
+ * @author Marc Piñero i Dídac Gasulla
  *
- * @author Daniel Ortiz
+ * Aquesta classe conté un atribut de tipus variable normal, un de la demanda de poetencia i 5 floats finals,
+ * que son la demanda màxima, la demanda mínima, i la variable nomral mean, estandard, i seed.
+ * Seguidament té diversos enums i String arrays amb les opcions del menu.
+ * Finalment diversos mètodes amb una estructura "case switch" per a manegar el que s'ha de realitzar segons
+ * l'opció del menu que esculli l'usuari.
+ *
  */
 public class CentralUB {
     private Adaptador adaptador;

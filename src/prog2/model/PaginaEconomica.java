@@ -1,4 +1,11 @@
 package prog2.model;
+/**
+ * @author Marc Piñero i Dídac Gasulla
+ *
+ * Aquesta classe hereta de paginaBitacola i té 7 floats, la demanda, la potencia, la demanda satisfeta,
+ * els beneficis, la penalització, el cost i els guanys. Els mètodes son només els getters i setters i el
+ * toString per a imprimir tota la informacio de la pàgina.
+ */
 
 public class PaginaEconomica extends PaginaBitacola {
     private float demanda;

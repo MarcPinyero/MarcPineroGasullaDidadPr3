@@ -3,6 +3,12 @@ package prog2.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * @author Marc Piñero i Dídac Gasulla
+ *
+ * Aquesta classe conté un arraylist d'objectes de pàgina bitacola. i uns mètodes per a afegir pàgines,
+ * obtenir incidencies i un toString per a imprimir les pàgines.
+ */
 
 public class Bitacola implements InBitacola, Serializable {
     private ArrayList<PaginaBitacola> pagines;

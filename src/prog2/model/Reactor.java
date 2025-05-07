@@ -1,6 +1,13 @@
 package prog2.model;
 
 import prog2.vista.CentralUBException;
+/**
+ * @author Marc Piñero i Dídac Gasulla
+ *
+ * Aquesta classe conté un float amb la temperatura del reactor i un boolean per saber si està actiu.
+ * un mètode per a activar i per desactivar el reactor, un per revisar el funcionament i un per obtenir el cost
+ * i el output.
+ */
 
 import java.io.Serializable;
 import java.lang.foreign.SegmentAllocator;
@@ -34,6 +41,11 @@ public class Reactor implements InComponent, Serializable {
         return activat;
     }
 
+    /**
+     * Aquest mètode comprova que el funcionament del reactor sugui correcte a partir del valor de la
+     * temperatura, en cas que sigui major a 1000 posa el valor del boolean activat a fals.
+     * finalement llança una excepció dient que la temperatura del reactor es superior a 1000 graus.
+     */
     @Override
     public void revisa(PaginaIncidencies p) {
         if (temp > 1000){

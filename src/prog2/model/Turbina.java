@@ -1,6 +1,12 @@
 package prog2.model;
 
 import prog2.vista.CentralUBException;
+/**
+ * @author Marc Piñero i Dídac Gasulla
+ *
+ * Aquesta classe només té un boolean per saber si està activa o no, un mètode per activar i un per desactivar,
+ * després un mètode per revisar el funcionament, un per calcular el cost i un per calcular el output.
+ */
 
 import java.io.Serializable;
 

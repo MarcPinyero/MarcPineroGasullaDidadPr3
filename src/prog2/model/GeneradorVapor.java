@@ -1,6 +1,12 @@
 package prog2.model;
 
 import prog2.vista.CentralUBException;
+/**
+ * @author Marc Piñero i Dídac Gasulla
+ *
+ * Aquesta classe té un boolean per si està actiu o no el generador i un mètode per activar o desactivar-lo,
+ *  un per revisar el correcte funcionament i un per calcular el cost i el output.
+ */
 
 import java.io.Serializable;
 

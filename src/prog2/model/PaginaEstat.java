@@ -1,4 +1,10 @@
-package prog2.model;
+package prog2.model;/**
+ * @author Marc Piñero i Dídac Gasulla
+ *
+ * Aquesta classe també hereta de pagina bitacola i conté 5 floats, que representen les barres, els reactors
+ * la refrigeració, el generador i la turbina. Finalment els getters i setters i el toString per a imprimir
+ * el contingut de la pàgina.
+ */
 
 public class PaginaEstat extends PaginaBitacola{
     private float OutBarres;

@@ -5,6 +5,12 @@ import prog2.vista.CentralUBException;
 
 import java.io.*;
 import java.util.List;
+/**
+ * @author Marc Piñero i Dídac Gasulla
+ *
+ * Aquesta classe s'utilitza per a intervenir entre vista i les dades del model. té un atribut de tipus dades
+ * i diversos mètodes per a interactuar amb aquestes dades.
+ */
 
 public class Adaptador {
     private Dades dades;
@@ -94,7 +100,10 @@ public class Adaptador {
 
 
     }
-
+    /**
+     * Aquest mètode fa servir un bloc de codi try catch per a guardar les dades de la central en un fitxer.
+     * I llença les excepcions corresponents.
+     */
     public void guardaDades(String camiDesti) throws CentralUBException{
         File file = new File(camiDesti);
         FileOutputStream fos = null;
@@ -127,6 +136,10 @@ public class Adaptador {
         }
 
     }
+    /**
+     * Aquest mètode també fa servir una estructura de codi try catch, però en aquest cas per a llegir un
+     *  fitxer i carregar les dades a la central.
+     */
     public void carregaDades(String camiOrigen)throws CentralUBException{
         Dades dades1 = null;
         FileInputStream fin = null;

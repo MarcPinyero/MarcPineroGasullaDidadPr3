@@ -10,8 +10,14 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * @author Marc Piñero i Dídac Gasulla
  *
- * @author Daniel Ortiz
+ * la classe dades és la principal del paquet model, ja que conté i gestiona totes les dades de la central.
+ * conté els seguents atributs: una VariableUniforme un float per l'insercio de les barres, un reactor,
+ * un sistemaRefrigeracio, un generador de vapor, una turbina, Bitacola un int per contar els dies, i un
+ * float per a calcular els guanys totals. també té 4 valors finals, un per als guanys inicials, un per al
+ * preu per unitat de potencia, un preu per la sanció per exces de potencia, i un per .
+ * Finalment té diverses funcions per interactuar amb aquests atributs.
  */
 public class Dades implements InDades, Serializable {
     public final static long  VAR_UNIF_SEED = 123;

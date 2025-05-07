@@ -6,8 +6,9 @@
 package prog2.vista;
 
 /**
+ * @author Marc Piñero i Dídac Gasulla
  *
- * @author dortiz
+ * Aquesta classe crea un objecte de tipus centralUB i incialitza la gestió de la vista
  */
 public class IniciadorCentralUB {
 

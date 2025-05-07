@@ -8,8 +8,10 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
+ * @author Marc Piñero i Dídac Gasulla
  *
- * @author Daniel Ortiz
+ * Aquesta classe té una atribut random per a generar la variable uniforme, és un valor entre 0 i 100, té un
+ * mètode per a generar el seguent valor.
  */
 public class VariableUniforme implements Serializable {
     private Random random;
