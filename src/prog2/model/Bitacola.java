@@ -23,7 +23,7 @@ public class Bitacola implements InBitacola, Serializable {
 
     }
 
-    //PUEDE QUE ESTE MAL
+
     @Override
     public List<PaginaIncidencies> getIncidencies() {
         List<PaginaIncidencies> incidencies = new ArrayList<>();
