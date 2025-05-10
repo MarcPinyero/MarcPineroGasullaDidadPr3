@@ -23,7 +23,7 @@ public class BombaRefrigerant implements InBombaRefrigerant, Serializable {
 
     public BombaRefrigerant(VariableUniforme var, int id) {
         Id = id;
-        variableUniforme = var;
+        this.variableUniforme = var;
 
     }
 
@@ -58,6 +58,7 @@ public class BombaRefrigerant implements InBombaRefrigerant, Serializable {
      */
     @Override
     public void revisa(PaginaIncidencies p) {
+
         if(variableUniforme.seguentValor() <= 25) {
             foraDeServei = true;
             activat = false;

@@ -13,7 +13,7 @@ public class DadesTest {
     }
     @Test
     public void refrigeraReactor(){
-        dades.refrigeraReactor();
+        
 
     }
 

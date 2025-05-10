@@ -1,9 +1,10 @@
 package prog2.model;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 public class ReactorTest {
     private Reactor reactor;
     private PaginaIncidencies paginaIncidencies;
@@ -16,19 +17,19 @@ public class ReactorTest {
     public void activa(){
         reactor.activa();
         if (reactor.getTemp() <= 1000){
-            assertFalse(reactor.getActivat(),"No s'ha activat el reactor");
+            assertTrue(reactor.getActivat(),"No s'ha activat el reactor");
         }
     }
     @Test
     public void desactiva(){
         reactor.desactiva();
-        assertTrue(reactor.getActivat(),"No s'ha desactivat el reactor");
+        assertFalse(reactor.getActivat(),"No s'ha desactivat el reactor");
     }
     @Test
     public void revisa (){
         reactor.revisa(paginaIncidencies);
         if (reactor.getTemp() > 1000){
-            assertTrue(reactor.getActivat(),"No s'ha revisat correctament el funcionament del reactor");
+            assertFalse(reactor.getActivat(),"No s'ha revisat correctament el funcionament del reactor");
         }
     }
     @Test

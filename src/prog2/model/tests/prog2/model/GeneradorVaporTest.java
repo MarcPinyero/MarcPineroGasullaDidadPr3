@@ -14,12 +14,12 @@ public class GeneradorVaporTest {
     @Test
     public void activa(){
         generadorVapor.activa();
-        assertFalse(generadorVapor.getActivat(),"No s'ha activat el generador de vapor");
+        assertTrue(generadorVapor.getActivat(),"No s'ha activat el generador de vapor");
     }
     @Test
     public void desactiva(){
         generadorVapor.desactiva();
-        assertTrue(generadorVapor.getActivat(),"No s'ha desactivat el generador de vapor");
+        assertFalse(generadorVapor.getActivat(),"No s'ha desactivat el generador de vapor");
     }
 
 }
