@@ -79,7 +79,7 @@ public class Adaptador {
         System.out.println(bitacola.toString());
     }
 
-    public void mostrarIncidencies(){
+    public String mostrarIncidencies(){
         List<PaginaIncidencies> incidencies = dades.mostraIncidencies();
 
         StringBuilder resultat = new StringBuilder();
@@ -87,7 +87,7 @@ public class Adaptador {
             resultat.append(pagina.toString()).append("\n");
         }
 
-        System.out.println(resultat.toString());
+        return resultat.toString();
     }
 
     public void mostrarPercentatge(float demanda){

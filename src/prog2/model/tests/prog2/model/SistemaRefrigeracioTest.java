@@ -5,48 +5,77 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SistemaRefrigeracioTest {
+class SistemaRefrigeracioTest {
     private SistemaRefrigeracio sistemaRefrigeracio;
-    private BombaRefrigerant bombaRefrigerant;
-    private PaginaIncidencies paginaIncidencies;
+    private BombaRefrigerant bomba1;
+    private BombaRefrigerant bomba2;
     private VariableUniforme uniforme;
-    private float input;
+    private PaginaIncidencies paginaIncidencies;
     @BeforeEach
-    void setup(){
-        uniforme = new VariableUniforme(321);
-        bombaRefrigerant = new BombaRefrigerant(uniforme, 123);
+    void setUp() {
+        paginaIncidencies = new PaginaIncidencies(2);
+        uniforme = new VariableUniforme(123);
+        bomba1 = new BombaRefrigerant(uniforme,1);
+        bomba2 = new BombaRefrigerant(uniforme,2);
         sistemaRefrigeracio = new SistemaRefrigeracio();
     }
+
     @Test
-    public void activa(){
+    void afegirBomba() {
+        sistemaRefrigeracio.afegirBomba(bomba1);
+        sistemaRefrigeracio.afegirBomba(bomba2);
+        assertTrue(sistemaRefrigeracio.getBombas().contains(bomba1));
+        assertTrue(sistemaRefrigeracio.getBombas().contains(bomba2));
+    }
+
+    @Test
+    void activa() {
+        sistemaRefrigeracio.afegirBomba(bomba1);
+        sistemaRefrigeracio.afegirBomba(bomba2);
         sistemaRefrigeracio.activa();
-        assertFalse(sistemaRefrigeracio.getActivat(),"No s'ha activat el sistema de refrigeracio");
+        assertTrue(bomba1.getActivat());
+        assertTrue(bomba2.getActivat());
 
     }
+
     @Test
-    public void desactiva(){
+    void desactiva() {
+        sistemaRefrigeracio.afegirBomba(bomba1);
+        sistemaRefrigeracio.afegirBomba(bomba2);
+        bomba1.activa();
+        bomba2.activa();
         sistemaRefrigeracio.desactiva();
-        assertFalse(sistemaRefrigeracio.getActivat(),"No s'ha desactivat el sistema de refrigeracio");
+        assertFalse(bomba1.getActivat());
+        assertFalse(bomba2.getActivat());
     }
+
     @Test
-    public void afegeirBomba(){
-
+    void getActivat() {
+        sistemaRefrigeracio.afegirBomba(bomba1);
+        sistemaRefrigeracio.afegirBomba(bomba2);
+        bomba2.activa();
+        assertTrue(sistemaRefrigeracio.getActivat());
     }
+
     @Test
-    public void revisa() {
-        bombaRefrigerant.revisa(paginaIncidencies);
-        if (uniforme.seguentValor() <= 25) {
-            assertFalse(bombaRefrigerant.getForaDeServei(), "No s'ha revisat correctament el funcionament de la bomba refrigerant");
-
-        }
+    void getCostOperatiu() {
+        sistemaRefrigeracio.afegirBomba(bomba1);
+        sistemaRefrigeracio.afegirBomba(bomba2);
+        bomba1.activa();
+        bomba2.activa();
+        assertEquals(sistemaRefrigeracio.getCostOperatiu(),260);
+        bomba2.desactiva();
+        assertEquals(sistemaRefrigeracio.getCostOperatiu(),130);
     }
 
-    //@Test
-    //public void calculaOutput(){
-    //sistemaRefrigeracio.calculaOutput(input);
-    // assertEquals(sistemaRefrigeracio.calculaOutput(input),input , "No s'ha calculat correctament el output");
-
-    //}
-
-
+    @Test
+    void calculaOutput() {
+        sistemaRefrigeracio.afegirBomba(bomba1);
+        sistemaRefrigeracio.afegirBomba(bomba2);
+        bomba1.activa();
+        bomba2.activa();
+        assertEquals(sistemaRefrigeracio.calculaOutput(400),400);
+        bomba1.desactiva();
+        assertEquals(sistemaRefrigeracio.calculaOutput(500),250);
+    }
 }

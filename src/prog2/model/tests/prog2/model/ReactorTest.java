@@ -1,10 +1,10 @@
 package prog2.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import prog2.vista.CentralUBException;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 public class ReactorTest {
     private Reactor reactor;
     private PaginaIncidencies paginaIncidencies;
@@ -12,25 +12,32 @@ public class ReactorTest {
     @BeforeEach
     void setUp() {
         reactor = new Reactor();
+        paginaIncidencies = new PaginaIncidencies(1);
     }
     @Test
     public void activa(){
         reactor.activa();
-        if (reactor.getTemp() <= 1000){
-            assertTrue(reactor.getActivat(),"No s'ha activat el reactor");
-        }
+        assertTrue(reactor.getActivat());
+        reactor.desactiva();
+        reactor.setTemp(2000);
+        CentralUBException excepcio = assertThrows(CentralUBException.class, () -> {
+            reactor.activa();
+        });
+        assertTrue(excepcio.getMessage().contains("Temperatura superior a 1000º"));
+
     }
     @Test
     public void desactiva(){
         reactor.desactiva();
-        assertFalse(reactor.getActivat(),"No s'ha desactivat el reactor");
+        assertFalse(reactor.getActivat());
     }
     @Test
     public void revisa (){
+        reactor.setTemp(2000);
         reactor.revisa(paginaIncidencies);
-        if (reactor.getTemp() > 1000){
-            assertFalse(reactor.getActivat(),"No s'ha revisat correctament el funcionament del reactor");
-        }
+        assertTrue(paginaIncidencies.toString().contains("Temperatura del reactor superior a 1000"));
+
+
     }
     @Test
     public void calculaOutput(){

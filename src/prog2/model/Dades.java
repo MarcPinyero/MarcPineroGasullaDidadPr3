@@ -55,7 +55,6 @@ public class Dades implements InDades, Serializable {
         BombaRefrigerant b1 = new BombaRefrigerant(variableUniforme, 1);
         BombaRefrigerant b2 = new BombaRefrigerant(variableUniforme, 2);
         BombaRefrigerant b3 = new BombaRefrigerant(variableUniforme, 3);
-        
         this.sistemaRefrigeracio.afegirBomba(b0);
         this.sistemaRefrigeracio.afegirBomba(b1);
         this.sistemaRefrigeracio.afegirBomba(b2);

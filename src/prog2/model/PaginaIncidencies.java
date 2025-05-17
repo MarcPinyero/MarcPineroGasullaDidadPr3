@@ -15,6 +15,7 @@ public class PaginaIncidencies extends PaginaBitacola{
     public PaginaIncidencies(int dia) {
         super(dia);
         this.llistaIncidencies = new ArrayList<>();
+
     }
 
     public void afegeixIncidencia(String descIncidencia){

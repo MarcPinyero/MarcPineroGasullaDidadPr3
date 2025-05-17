@@ -65,9 +65,13 @@ public class DadesTest {
 
 
     @Test
-    void CalculaPotencia() {
-        float potencia = dades.calculaPotencia();
-        assertTrue(potencia >= 0);
+    void calculaPotenciaTest() {
+        dades.setInsercioBarres(40);
+        dades.activaReactor();
+        dades.mostraReactor().setTemp(300);
+        dades.mostraSistemaRefrigeracio().activa();
+        assertEquals(dades.calculaPotencia(), 1620);
+
     }
 
     @Test

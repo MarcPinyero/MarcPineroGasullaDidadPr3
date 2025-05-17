@@ -1,10 +1,9 @@
 package prog2.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 public class BitacolaTest {
     private Bitacola bitacola;
     private PaginaEconomica paginaEconomica;

@@ -1,7 +1,7 @@
 package prog2.model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,26 +11,28 @@ public class BombaRefrigerantTest {
     private PaginaIncidencies paginaIncidencies;
     @BeforeEach
     void setUp() {
-        uniforme = new VariableUniforme(31);
+        paginaIncidencies = new PaginaIncidencies(2);
+        uniforme = new VariableUniforme(123);
         bombaRefrigerant = new BombaRefrigerant(uniforme,123);
     }
     @Test
     public void activa(){
         bombaRefrigerant.activa();
-        assertTrue(bombaRefrigerant.getActivat(),"No s'ha activat la bomba refrigerant");
+        assertTrue(bombaRefrigerant.getActivat());
     }
     @Test
     public void desactiva(){
         bombaRefrigerant.desactiva();
-        assertFalse(bombaRefrigerant.getActivat(),"No s'ha desactivat la bomba refrigerant");
+        assertFalse(bombaRefrigerant.getActivat());
     }
     @Test
     public void revisa(){
-        bombaRefrigerant.revisa(paginaIncidencies);
         if (uniforme.seguentValor() <= 25){
-            assertTrue(bombaRefrigerant.getForaDeServei(),"No s'ha revisat correctament el funcionament de la bomba refrigerant");
-
+            bombaRefrigerant.revisa(paginaIncidencies);
+            assertTrue(paginaIncidencies.toString().contains("La bomba refrig. " + bombaRefrigerant.getId() +"esta fora de servei."));
         }
+
+
 
     }
 

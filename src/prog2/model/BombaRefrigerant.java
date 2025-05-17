@@ -83,4 +83,8 @@ public class BombaRefrigerant implements InBombaRefrigerant, Serializable {
     public float getCostOperatiu() {
         return activat ? 130:0;
     }
+
+    public void setForaDeServei(boolean foraDeServei) {
+        this.foraDeServei = foraDeServei;
+    }
 }

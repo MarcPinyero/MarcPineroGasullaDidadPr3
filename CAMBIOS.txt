@@ -1,0 +1,1 @@
+He cambiado el metodo mostrar incidencies de adaptador para que en vez de imprimir un string con las incidencias lo devuelva

@@ -29,10 +29,12 @@ public class TurbinaTest {
         }
     }
     @Test
-    public void output(){
-        if(turbina.getActivat() && turbina.calculaOutput(input) >= 100){
-            assertEquals(turbina.calculaOutput(input), input * 2, "No s'ha calculat correctament el output");
-        }
+    void calculaOutput() {
+        assertEquals(turbina.calculaOutput(150),300);
+        assertEquals(turbina.calculaOutput(50),0);
+        turbina.desactiva();
+        assertEquals(turbina.calculaOutput(150),0);
+
 
     }
 
