@@ -62,21 +62,19 @@ public class Adaptador {
         dades.desactivaBomba(id);
     }
 
-    public void mostraRefrigeracio(){
-        SistemaRefrigeracio refri = dades.mostraSistemaRefrigeracio();
-        for (BombaRefrigerant bomba : refri.getBombas()){
-            System.out.println("ID: " + bomba.getId() + "Activat: " + bomba.getActivat() + "Capacitat: " + bomba.getCapacitat() + "Cost operatiu: " + bomba.getCostOperatiu() + "Fora de servei: " + bomba.getForaDeServei());
-        }
+    public SistemaRefrigeracio mostraRefrigeracio(){
+        return dades.mostraSistemaRefrigeracio();
+
     }
 
-    public void mostrarEstat(){
+    public String  mostrarEstat(){
         PaginaEstat estat = dades.mostraEstat();
-        System.out.println(estat.toString());
+        return estat.toString();
     }
 
-    public void mostrarBitacola(){
+    public String mostrarBitacola(){
         Bitacola bitacola = dades.mostraBitacola();
-        System.out.println(bitacola.toString());
+        return bitacola.toString();
     }
 
     public String mostrarIncidencies(){

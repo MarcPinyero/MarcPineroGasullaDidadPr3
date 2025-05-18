@@ -1,1 +1,4 @@
 He cambiado el metodo mostrar incidencies de adaptador para que en vez de imprimir un string con las incidencias lo devuelva
+En el metodo mostra estat tambien
+en mostra bitacola lo mismo
+En mostra refrigeracio he hecho que devuelva un SistemaRefrigeracio para poder ver bomba a bomba en el gestiocomponents si estan activas

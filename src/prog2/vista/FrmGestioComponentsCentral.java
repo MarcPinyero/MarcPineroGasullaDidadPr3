@@ -1,6 +1,8 @@
 package prog2.vista;
 
 import prog2.adaptador.Adaptador;
+import prog2.model.BombaRefrigerant;
+import prog2.model.SistemaRefrigeracio;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -12,17 +14,19 @@ public class FrmGestioComponentsCentral extends JDialog {
     private Adaptador adaptador;
     private JPanel contentPane;
     private JButton btnAplicarModificacions;
-    private JButton btnCancelarModificacions;
     private JLabel etBarresControl;
     private JSlider sldBarresControl;
     private JTextField txtIntroduirInsercioBarresControl;
     private JButton btnIntroduirInsercioBarresControl;
     private JButton btnDesactivarReactor;
     private JButton btnActivarReactor;
-    private JComboBox cmbBomba;
     private JButton btnActivarBomba;
     private JButton btnDesactivarBomba;
     private JList llistaIncidencies;
+    private JCheckBox chkBomba0;
+    private JCheckBox chkBomba1;
+    private JCheckBox chkBomba2;
+    private JCheckBox chkBomba3;
 
     public FrmGestioComponentsCentral(JFrame parent) {
         super(parent);
@@ -30,14 +34,10 @@ public class FrmGestioComponentsCentral extends JDialog {
         setSize(600, 600);
         setLocationRelativeTo(parent);
         setModal(true);
-        adaptador = new Adaptador();
+        adaptador = AppCentralUB.getAdaptador();
         sldBarresControl.setMaximum(100);
         sldBarresControl.setMinimum(0);
-        cmbBomba.addItem(0);
-        cmbBomba.addItem(1);
-        cmbBomba.addItem(2);
-        cmbBomba.addItem(3);
-        adaptador.finalitzaDia(8798);
+
         actualitzaIncidencies();
 
         sldBarresControl.addChangeListener(new ChangeListener() {
@@ -78,12 +78,40 @@ public class FrmGestioComponentsCentral extends JDialog {
         btnActivarBomba.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = (int) cmbBomba.getSelectedItem();
-                try{
-                    adaptador.activaBomba(id);
-                } catch (CentralUBException ex) {
-                    JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null );
+                if(chkBomba0.isSelected()) {
+                    try {
+                        adaptador.activaBomba(0);
+                    } catch (CentralUBException ex) {
+                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
 
+                    }
+                }
+
+                if(chkBomba1.isSelected()) {
+                    try {
+                        adaptador.activaBomba(1);
+                    } catch (CentralUBException ex) {
+                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+
+                    }
+                }
+
+                if(chkBomba2.isSelected()) {
+                    try {
+                        adaptador.activaBomba(2);
+                    } catch (CentralUBException ex) {
+                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+
+                    }
+                }
+
+                if(chkBomba3.isSelected()) {
+                    try {
+                        adaptador.activaBomba(3);
+                    } catch (CentralUBException ex) {
+                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+
+                    }
                 }
 
             }
@@ -92,19 +120,38 @@ public class FrmGestioComponentsCentral extends JDialog {
         btnDesactivarBomba.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = (int) cmbBomba.getSelectedItem();
-                adaptador.desactivaBomba(id);
+
+                if(chkBomba0.isSelected())
+                    adaptador.desactivaBomba(0);
+                if(chkBomba1.isSelected())
+                    adaptador.desactivaBomba(1);
+                if(chkBomba2.isSelected())
+                    adaptador.desactivaBomba(2);
+                if(chkBomba3.isSelected())
+                    adaptador.desactivaBomba(3);
+
+
+
+            }
+        });
+        btnAplicarModificacions.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
     }
 
     void actualitzaIncidencies(){
-        DefaultListModel model = new DefaultListModel();
-        model.clear();
-        String[] lineas = adaptador.mostrarIncidencies().split("\n");
-        model.addElement(lineas[0]);
-        model.addElement(lineas[1]);
-        model.addElement(lineas[2]);
-        model.addElement(lineas[3]);
-        llistaIncidencies.setModel(model);    }
-}
+            DefaultListModel model = new DefaultListModel();
+            model.clear();
+        SistemaRefrigeracio refri = adaptador.mostraRefrigeracio();
+        for (BombaRefrigerant bomba : refri.getBombas()){
+            if(bomba.getForaDeServei())
+                model.addElement("La bomba refrig. " + bomba.getId() + " està fora de servei.");
+        }
+
+            llistaIncidencies.setModel(model);
+        }
+    }
+
