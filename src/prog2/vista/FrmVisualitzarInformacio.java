@@ -29,7 +29,7 @@ public class FrmVisualitzarInformacio extends JDialog {
         setLocationRelativeTo(parent);
         setModal(true);
         adaptador = AppCentralUB.getAdaptador();
-        txtInfo.setEnabled(false);
+        txtInfo.setEditable(false);
         btnMostraInfo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

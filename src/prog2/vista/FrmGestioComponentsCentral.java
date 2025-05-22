@@ -39,6 +39,11 @@ public class FrmGestioComponentsCentral extends JDialog {
     private JCheckBox chkBomba2;
     private JCheckBox chkBomba3;
     private JLabel lblInsercio;
+    private JLabel lblReactor;
+    private JLabel lblBomba0;
+    private JLabel lblBomba2;
+    private JLabel lblBomba1;
+    private JLabel lblBomba3;
 
     public FrmGestioComponentsCentral(JFrame parent) {
         super(parent);
@@ -50,6 +55,12 @@ public class FrmGestioComponentsCentral extends JDialog {
         sldBarresControl.setMaximum(100);
         sldBarresControl.setMinimum(0);
         lblInsercio.setText((String.valueOf(adaptador.getInsercio())));
+        lblReactor.setText("Desactivat");
+        lblBomba0.setText("Desactivada");
+        lblBomba1.setText("Desactivada");
+        lblBomba2.setText("Desactivada");
+        lblBomba3.setText("Desactivada");
+
 
         actualitzaIncidencies();
 
@@ -78,6 +89,7 @@ public class FrmGestioComponentsCentral extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 try {
                     adaptador.activaReactor();
+                    lblReactor.setText("Activat");
                     JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Reactor activat.");
                 } catch (CentralUBException ex) {
                     JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null );
@@ -88,6 +100,7 @@ public class FrmGestioComponentsCentral extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 adaptador.desactivaReactor();
+                lblReactor.setText("Desactivat");
                 JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Reactor desactivat.");
             }
         });
@@ -98,6 +111,8 @@ public class FrmGestioComponentsCentral extends JDialog {
                 if(chkBomba0.isSelected()) {
                     try {
                         adaptador.activaBomba(0);
+                        lblBomba0.setText("Activada");
+                        JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Bomba 0 activada.");
                     } catch (CentralUBException ex) {
                         JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Fora de servei.", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
 
@@ -107,6 +122,8 @@ public class FrmGestioComponentsCentral extends JDialog {
                 if(chkBomba1.isSelected()) {
                     try {
                         adaptador.activaBomba(1);
+                        lblBomba1.setText("Activada");
+                        JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Bomba 1 activada.");
                     } catch (CentralUBException ex) {
                         JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Fora de servei.", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
 
@@ -116,6 +133,8 @@ public class FrmGestioComponentsCentral extends JDialog {
                 if(chkBomba2.isSelected()) {
                     try {
                         adaptador.activaBomba(2);
+                        lblBomba2.setText("Activada");
+                        JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Bomba 2 activada.");
                     } catch (CentralUBException ex) {
                         JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Fora de servei.", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
 
@@ -125,12 +144,14 @@ public class FrmGestioComponentsCentral extends JDialog {
                 if(chkBomba3.isSelected()) {
                     try {
                         adaptador.activaBomba(3);
+                        lblBomba3.setText("Activada");
+                        JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Bomba 3 activada.");
                     } catch (CentralUBException ex) {
                         JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Fora de servei.", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
 
                     }
                 }
-                JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Bombas activades.");
+
 
             }
         });
@@ -139,14 +160,24 @@ public class FrmGestioComponentsCentral extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if(chkBomba0.isSelected())
+                if(chkBomba0.isSelected()) {
                     adaptador.desactivaBomba(0);
-                if(chkBomba1.isSelected())
+                    lblBomba0.setText("Desactivada");
+
+                }
+                if(chkBomba1.isSelected()) {
                     adaptador.desactivaBomba(1);
-                if(chkBomba2.isSelected())
+                    lblBomba1.setText("Desactivada");
+
+                }
+                if(chkBomba2.isSelected()) {
                     adaptador.desactivaBomba(2);
-                if(chkBomba3.isSelected())
+                    lblBomba2.setText("Desactivada");
+                }
+                if(chkBomba3.isSelected()) {
                     adaptador.desactivaBomba(3);
+                    lblBomba3.setText("Desactivada");
+                }
 
                 JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Bombas desactivadas.");
 
