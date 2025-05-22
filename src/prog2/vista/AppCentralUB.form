@@ -6,6 +6,8 @@
       <xy x="20" y="20" width="514" height="415"/>
     </constraints>
     <properties>
+      <background color="-12280108"/>
+      <enabled value="false"/>
       <foreground color="-13288219"/>
     </properties>
     <border type="none"/>
@@ -16,7 +18,7 @@
         </constraints>
         <properties>
           <font name="Berlin Sans FB Demi" size="12" style="1"/>
-          <foreground color="-10789403"/>
+          <foreground color="-16514044"/>
           <text value="Gestio"/>
         </properties>
       </component>
@@ -26,7 +28,7 @@
         </constraints>
         <properties>
           <font name="Berlin Sans FB Demi" size="12" style="1"/>
-          <foreground color="-10789403"/>
+          <foreground color="-16514044"/>
           <text value="Info"/>
         </properties>
       </component>
@@ -36,7 +38,7 @@
         </constraints>
         <properties>
           <font name="Berlin Sans FB Demi" size="12" style="1"/>
-          <foreground color="-10789403"/>
+          <foreground color="-16514044"/>
           <text value="Finalitzar Dia"/>
         </properties>
       </component>
@@ -46,7 +48,7 @@
         </constraints>
         <properties>
           <font name="Berlin Sans FB Demi" size="12" style="1"/>
-          <foreground color="-10789403"/>
+          <foreground color="-16514044"/>
           <text value="Desar"/>
         </properties>
       </component>
@@ -56,7 +58,7 @@
         </constraints>
         <properties>
           <font name="Berlin Sans FB Demi" size="12" style="1"/>
-          <foreground color="-10789403"/>
+          <foreground color="-16514044"/>
           <text value="Carregar"/>
         </properties>
       </component>

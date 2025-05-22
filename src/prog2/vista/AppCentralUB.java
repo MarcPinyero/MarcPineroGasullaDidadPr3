@@ -91,7 +91,7 @@ public class AppCentralUB extends JFrame {
         btnCarregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser("C:\\Users\\marcu\\IdeaProjects\\MarcPineroGasullaDidacPr3");
+                JFileChooser fileChooser = new JFileChooser("C:\\Users\\didac\\IdeaProjects\\MarcPineroGasullaDidacPr3.2");
                 int returnVal = fileChooser.showDialog(AppCentralUB.this, "Seleccionar");
                 adaptador.carregaDades(fileChooser.getSelectedFile().getAbsolutePath());
             }

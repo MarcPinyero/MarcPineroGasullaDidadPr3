@@ -8,7 +8,10 @@ import java.awt.event.ActionListener;
 /**
  * @author Marc Piñero i Dídac Gasulla
  *
- * Aquesta classe té un atribut de tipus adaptador. Després
+ * Aquesta classe té un atribut de tipus adaptador. Després té tots els atributs per a la gestió d'events, que en aquest cas
+ * son una caixa on pots escollir la informació que desitges veure, ja sigui l'esta de la central, la bitacola o les
+ * incidències. Per a mostrar aquesta informació fem servir un text area. Finalment tenim un botó OK per a sortir de la
+ * pestanya amb l'informació i tornar al menu principal.
  */
 
 public class FrmVisualitzarInformacio extends JDialog {
