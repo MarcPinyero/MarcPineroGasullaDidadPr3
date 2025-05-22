@@ -5,7 +5,9 @@
     <constraints>
       <xy x="20" y="20" width="514" height="415"/>
     </constraints>
-    <properties/>
+    <properties>
+      <foreground color="-13288219"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="29b48" class="javax.swing.JButton" binding="btnGestioComponentsCentral">
@@ -13,6 +15,8 @@
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Berlin Sans FB Demi" size="12" style="1"/>
+          <foreground color="-10789403"/>
           <text value="Gestio"/>
         </properties>
       </component>
@@ -21,6 +25,8 @@
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Berlin Sans FB Demi" size="12" style="1"/>
+          <foreground color="-10789403"/>
           <text value="Info"/>
         </properties>
       </component>
@@ -29,6 +35,8 @@
           <grid row="1" column="0" row-span="3" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Berlin Sans FB Demi" size="12" style="1"/>
+          <foreground color="-10789403"/>
           <text value="Finalitzar Dia"/>
         </properties>
       </component>
@@ -37,6 +45,8 @@
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Berlin Sans FB Demi" size="12" style="1"/>
+          <foreground color="-10789403"/>
           <text value="Desar"/>
         </properties>
       </component>
@@ -45,6 +55,8 @@
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Berlin Sans FB Demi" size="12" style="1"/>
+          <foreground color="-10789403"/>
           <text value="Carregar"/>
         </properties>
       </component>

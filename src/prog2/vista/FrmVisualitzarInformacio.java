@@ -5,6 +5,11 @@ import prog2.adaptador.Adaptador;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * @author Marc Piñero i Dídac Gasulla
+ *
+ * Aquesta classe té un atribut de tipus adaptador. Després
+ */
 
 public class FrmVisualitzarInformacio extends JDialog {
     private Adaptador adaptador;

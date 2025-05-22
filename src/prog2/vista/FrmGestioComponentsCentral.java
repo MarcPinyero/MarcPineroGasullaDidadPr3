@@ -9,7 +9,18 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * @author Marc Piñero i Dídac Gasulla
+ *
+ * Aquesta classe conté un atribut de tipus adaptador, i diversos atributs de gestió d'events ( botons,
+ * panells, labels...)
+ * La gestió d'events es fa a partir de dos botons per activar i desactivar el reactor. Dos botons més per
+ * a activar i desactivar la bomba, amb l'ajuda de 4 CheckBoxes (un per a cada bomba) i amb la seva gestió
+ * d'incidències. Més endavant, per a les barres de control tenim un Slider que ens permet seleccionar la
+ * quatitat de barres de control desitjada, i un botó per a introduir les barres seleccionades.
+ * Finalment un botó per a aplicar tots els cavnis anteriors. I un mètode per a actualitzar la llista
+ * d'incidències.
+ */
 public class FrmGestioComponentsCentral extends JDialog {
     private Adaptador adaptador;
     private JPanel contentPane;
