@@ -38,6 +38,7 @@ public class FrmGestioComponentsCentral extends JDialog {
     private JCheckBox chkBomba1;
     private JCheckBox chkBomba2;
     private JCheckBox chkBomba3;
+    private JLabel lblInsercio;
 
     public FrmGestioComponentsCentral(JFrame parent) {
         super(parent);
@@ -48,6 +49,7 @@ public class FrmGestioComponentsCentral extends JDialog {
         adaptador = AppCentralUB.getAdaptador();
         sldBarresControl.setMaximum(100);
         sldBarresControl.setMinimum(0);
+        lblInsercio.setText((String.valueOf(adaptador.getInsercio())));
 
         actualitzaIncidencies();
 
@@ -56,6 +58,7 @@ public class FrmGestioComponentsCentral extends JDialog {
             public void stateChanged(ChangeEvent e) {
                 int insercio = sldBarresControl.getValue();
                 adaptador.setInsercio(insercio);
+                lblInsercio.setText((String.valueOf(adaptador.getInsercio())));
 
 
 
@@ -66,6 +69,7 @@ public class FrmGestioComponentsCentral extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 float insercio = Float.parseFloat(txtIntroduirInsercioBarresControl.getText());
                 adaptador.setInsercio(insercio);
+                lblInsercio.setText((String.valueOf(adaptador.getInsercio())));
 
             }
         });
