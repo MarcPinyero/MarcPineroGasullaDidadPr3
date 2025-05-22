@@ -10,7 +10,6 @@ public class FrmVisualitzarInformacio extends JDialog {
     private Adaptador adaptador;
     private JPanel contentPane;
     private JButton buttonOK;
-    private JButton buttonCancel;
     private JComboBox cmbEscollirInfo;
     private JTextArea txtInfo;
     private JButton btnMostraInfo;
@@ -32,6 +31,12 @@ public class FrmVisualitzarInformacio extends JDialog {
                     txtInfo.setText(adaptador.mostrarBitacola());
                 if(info.equals("Incidencies"))
                     txtInfo.setText(adaptador.mostrarIncidencies());
+            }
+        });
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
     }

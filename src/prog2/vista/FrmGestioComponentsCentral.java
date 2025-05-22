@@ -45,7 +45,7 @@ public class FrmGestioComponentsCentral extends JDialog {
             public void stateChanged(ChangeEvent e) {
                 int insercio = sldBarresControl.getValue();
                 adaptador.setInsercio(insercio);
-                txtIntroduirInsercioBarresControl.setText(Integer.toString(insercio));
+
 
 
             }
@@ -55,7 +55,7 @@ public class FrmGestioComponentsCentral extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 float insercio = Float.parseFloat(txtIntroduirInsercioBarresControl.getText());
                 adaptador.setInsercio(insercio);
-                sldBarresControl.setValue((int) insercio);
+
             }
         });
         btnActivarReactor.addActionListener(new ActionListener() {
@@ -63,6 +63,7 @@ public class FrmGestioComponentsCentral extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 try {
                     adaptador.activaReactor();
+                    JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Reactor activat.");
                 } catch (CentralUBException ex) {
                     JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null );
                 }
@@ -72,6 +73,7 @@ public class FrmGestioComponentsCentral extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 adaptador.desactivaReactor();
+                JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Reactor desactivat.");
             }
         });
 
@@ -82,7 +84,7 @@ public class FrmGestioComponentsCentral extends JDialog {
                     try {
                         adaptador.activaBomba(0);
                     } catch (CentralUBException ex) {
-                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Fora de servei.", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
 
                     }
                 }
@@ -91,7 +93,7 @@ public class FrmGestioComponentsCentral extends JDialog {
                     try {
                         adaptador.activaBomba(1);
                     } catch (CentralUBException ex) {
-                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Fora de servei.", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
 
                     }
                 }
@@ -100,7 +102,7 @@ public class FrmGestioComponentsCentral extends JDialog {
                     try {
                         adaptador.activaBomba(2);
                     } catch (CentralUBException ex) {
-                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Fora de servei.", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
 
                     }
                 }
@@ -109,10 +111,11 @@ public class FrmGestioComponentsCentral extends JDialog {
                     try {
                         adaptador.activaBomba(3);
                     } catch (CentralUBException ex) {
-                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Error", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
+                        JOptionPane.showOptionDialog(FrmGestioComponentsCentral.this, ex.getMessage(), "Fora de servei.", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, null, null);
 
                     }
                 }
+                JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Bombas activades.");
 
             }
         });
@@ -129,6 +132,8 @@ public class FrmGestioComponentsCentral extends JDialog {
                     adaptador.desactivaBomba(2);
                 if(chkBomba3.isSelected())
                     adaptador.desactivaBomba(3);
+
+                JOptionPane.showMessageDialog(FrmGestioComponentsCentral.this, "Bombas desactivadas.");
 
 
 

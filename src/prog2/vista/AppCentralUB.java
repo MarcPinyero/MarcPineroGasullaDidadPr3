@@ -23,6 +23,8 @@ public class AppCentralUB extends JFrame {
     private JButton btnGestioComponentsCentral;
     private JButton btnInfo;
     private JButton btnFinalitzarDia;
+    private JButton btnCarregar;
+    private JButton btnDesar;
 
 
     public static void main(String[] args) {
@@ -60,10 +62,27 @@ public class AppCentralUB extends JFrame {
         btnFinalitzarDia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                adaptador.finalitzaDia(demandaPotencia);
+                String info = adaptador.finalitzaDia(demandaPotencia);
+                JOptionPane.showMessageDialog(AppCentralUB.this, info, "Actualitzaciò central", JOptionPane.INFORMATION_MESSAGE);
                 demandaPotencia = generaDemandaPotencia();
 
 
+            }
+        });
+
+        btnDesar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String file = JOptionPane.showInputDialog("Digues la direcció del ficher.");
+                adaptador.guardaDades(file);
+            }
+        });
+        btnCarregar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser("C:\\Users\\marcu\\IdeaProjects\\MarcPineroGasullaDidacPr3");
+                int returnVal = fileChooser.showDialog(AppCentralUB.this, "Seleccionar");
+                adaptador.carregaDades(fileChooser.getSelectedFile().getAbsolutePath());
             }
         });
     }

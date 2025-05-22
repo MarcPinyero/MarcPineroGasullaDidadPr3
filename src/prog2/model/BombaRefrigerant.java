@@ -35,7 +35,7 @@ public class BombaRefrigerant implements InBombaRefrigerant, Serializable {
     @Override
     public void activa() throws CentralUBException {
         if (foraDeServei)
-            throw new CentralUBException("Fora de servei.");
+            throw new CentralUBException("La bomba amb ID" + getId() + " està fora de servei.");
         activat = true;
 
     }
